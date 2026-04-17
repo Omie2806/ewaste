@@ -1,3 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>E-Waste Classifier</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --green:#1D9E75;--green-dark:#0F6E56;--green-light:#E1F5EE;--green-mid:#9FE1CB;
+    --amber:#BA7517;--amber-light:#FAEEDA;--red:#A32D2D;--red-light:#FCEBEB;
+
+    /* 🔥 MISSING VARIABLES FIXED */
+    --color-background-primary:#ffffff;
+    --color-background-secondary:#f7f7f7;
+    --color-text-primary:#111;
+    --color-text-secondary:#666;
+    --color-border-tertiary:#e5e5e5;
+    --color-border-secondary:#ddd;
+    --border-radius-lg:14px;
+    --border-radius-md:10px;
+  }
+
+  body{font-family:'Syne',sans-serif;background:var(--color-background-secondary);color:var(--color-text-primary);padding:1.5rem 1rem;}
+  /* keep rest of your CSS unchanged */
+  </style>
+</head>
+
+<body>
+
+<!-- ✅ YOUR HTML CONTENT -->
 
 
 <style>
@@ -370,3 +405,20 @@ function render(r){
 
 document.getElementById('wasteInput').addEventListener('keydown',e=>{if(e.key==='Enter')classify();});
 </script>
+
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">
+E-Waste classifier — enter an item to get disposal guidance
+</h2>
+
+<div class="app">
+  <!-- KEEP YOUR FULL HTML BLOCK HERE (unchanged) -->
+</div>
+
+<div id="resultArea"></div>
+
+<script>
+/* ✅ PASTE YOUR FULL JS HERE (unchanged) */
+</script>
+
+</body>
+</html>
