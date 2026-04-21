@@ -1,38 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>E-Waste Classifier</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <style>
-  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-  :root{
-    --green:#1D9E75;--green-dark:#0F6E56;--green-light:#E1F5EE;--green-mid:#9FE1CB;
-    --amber:#BA7517;--amber-light:#FAEEDA;--red:#A32D2D;--red-light:#FCEBEB;
-
-    /* 🔥 MISSING VARIABLES FIXED */
-    --color-background-primary:#ffffff;
-    --color-background-secondary:#f7f7f7;
-    --color-text-primary:#111;
-    --color-text-secondary:#666;
-    --color-border-tertiary:#e5e5e5;
-    --color-border-secondary:#ddd;
-    --border-radius-lg:14px;
-    --border-radius-md:10px;
-  }
-
-  body{font-family:'Syne',sans-serif;background:var(--color-background-secondary);color:var(--color-text-primary);padding:1.5rem 1rem;}
-  /* keep rest of your CSS unchanged */
-  </style>
-</head>
-
-<body>
-
-<!-- ✅ YOUR HTML CONTENT -->
 
 
 <style>
@@ -40,9 +5,10 @@
 :root{
   --green:#1D9E75;--green-dark:#0F6E56;--green-light:#E1F5EE;--green-mid:#9FE1CB;
   --amber:#BA7517;--amber-light:#FAEEDA;--red:#A32D2D;--red-light:#FCEBEB;
+  --blue:#185FA5;--blue-light:#E6F1FB;
 }
-body{font-family:'Syne',sans-serif;background:var(--color-background-secondary);color:var(--color-text-primary);padding:1.5rem 1rem;}
-.app{max-width:860px;margin:0 auto;}
+body{font-family:'Syne',sans-serif;background:var(--color-background-secondary);color:var(--color-text-primary);padding:0;}
+.app{max-width:860px;margin:0 auto;padding:1.5rem 1rem;}
 .header{display:flex;align-items:center;gap:14px;margin-bottom:2rem;}
 .logo{width:42px;height:42px;background:var(--green);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .header h1{font-size:20px;font-weight:500;}
@@ -70,7 +36,6 @@ body{font-family:'Syne',sans-serif;background:var(--color-background-secondary);
 .metric-val.green{color:var(--green);}
 .metric-val.amber{color:var(--amber);}
 .metric-val.red{color:var(--red);}
-.metric-label{font-size:11px;color:var(--color-text-secondary);margin-top:4px;font-family:monospace;}
 .section-title{font-size:11px;font-weight:500;color:var(--color-text-secondary);letter-spacing:0.8px;text-transform:uppercase;font-family:monospace;margin-bottom:8px;}
 .hazard-bar{height:6px;background:var(--color-background-secondary);border-radius:4px;overflow:hidden;margin-bottom:1.25rem;}
 .hazard-fill{height:100%;border-radius:4px;}
@@ -88,10 +53,63 @@ body{font-family:'Syne',sans-serif;background:var(--color-background-secondary);
 .disp-title{font-size:13px;font-weight:500;margin-bottom:4px;}
 .disp-text{font-size:12px;color:var(--color-text-secondary);line-height:1.5;}
 .footer-note{font-size:12px;color:var(--color-text-secondary);font-family:monospace;text-align:center;padding-top:1rem;border-top:0.5px solid var(--color-border-tertiary);}
-.no-match{padding:2rem;text-align:center;color:var(--color-text-secondary);font-size:14px;}
+
+/* --- MARKETPLACE SECTION --- */
+.market-section{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:1.25rem;}
+.market-header{display:flex;gap:0;}
+.market-tab{flex:1;padding:10px 0;font-size:13px;font-weight:500;text-align:center;cursor:pointer;border:none;background:var(--color-background-secondary);color:var(--color-text-secondary);transition:all 0.15s;border-bottom:0.5px solid var(--color-border-tertiary);}
+.market-tab.active{background:var(--color-background-primary);color:var(--color-text-primary);border-bottom:2px solid var(--green);}
+.market-tab:first-child{border-right:0.5px solid var(--color-border-tertiary);}
+.market-body{padding:1rem;}
+.price-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-family:monospace;padding:3px 9px;border-radius:20px;}
+.price-badge.good{background:var(--green-light);color:var(--green-dark);}
+.price-badge.mid{background:var(--amber-light);color:var(--amber);}
+.price-badge.low{background:#FCEBEB;color:#A32D2D;}
+.market-price-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:1rem;}
+.price-card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:12px;text-align:center;}
+.price-card-label{font-size:11px;color:var(--color-text-secondary);font-family:monospace;margin-bottom:4px;}
+.price-card-val{font-size:17px;font-weight:500;font-family:monospace;color:var(--green);}
+.cond-select{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:1rem;}
+.cond-btn{font-size:12px;padding:5px 14px;border-radius:20px;border:0.5px solid var(--color-border-secondary);background:var(--color-background-secondary);color:var(--color-text-secondary);cursor:pointer;font-family:monospace;transition:all 0.15s;}
+.cond-btn.active{background:var(--green-light);border-color:var(--green-mid);color:var(--green-dark);}
+.listing-form{display:flex;flex-direction:column;gap:10px;}
+.listing-form input,.listing-form textarea,.listing-form select{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:9px 12px;font-size:13px;background:var(--color-background-secondary);color:var(--color-text-primary);outline:none;transition:border 0.15s;font-family:inherit;}
+.listing-form input:focus,.listing-form textarea:focus,.listing-form select:focus{border-color:var(--green);}
+.listing-form textarea{resize:vertical;min-height:64px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.btn-post{height:40px;padding:0 20px;background:var(--green);color:#fff;border:none;border-radius:var(--border-radius-md);font-size:13px;font-weight:500;cursor:pointer;width:100%;transition:background 0.15s;}
+.btn-post:hover{background:var(--green-dark);}
+.btn-post.buy-btn{background:var(--blue);}
+.btn-post.buy-btn:hover{background:#0C447C;}
+.listings-grid{display:flex;flex-direction:column;gap:10px;}
+.listing-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px;display:flex;gap:12px;align-items:flex-start;}
+.listing-avatar{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0;}
+.listing-info{flex:1;min-width:0;}
+.listing-title{font-size:14px;font-weight:500;margin-bottom:2px;}
+.listing-meta{font-size:12px;color:var(--color-text-secondary);font-family:monospace;}
+.listing-price{font-size:16px;font-weight:500;font-family:monospace;color:var(--green);flex-shrink:0;}
+.listing-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;}
+.listing-tag{font-size:11px;padding:2px 8px;border-radius:10px;font-family:monospace;}
+.listing-tag.cond-good{background:var(--green-light);color:var(--green-dark);}
+.listing-tag.cond-fair{background:var(--amber-light);color:var(--amber);}
+.listing-tag.cond-poor{background:#FCEBEB;color:#A32D2D);}
+.listing-tag.loc{background:var(--color-background-secondary);color:var(--color-text-secondary);border:0.5px solid var(--color-border-tertiary);}
+.success-toast{background:var(--green-light);border:0.5px solid var(--green-mid);border-radius:var(--border-radius-md);padding:12px 16px;font-size:13px;color:var(--green-dark);margin-bottom:1rem;display:none;}
+.market-tip{font-size:12px;color:var(--color-text-secondary);font-family:monospace;padding:10px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);line-height:1.6;}
+.want-form{display:flex;flex-direction:column;gap:10px;}
+.want-form input,.want-form select{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:9px 12px;font-size:13px;background:var(--color-background-secondary);color:var(--color-text-primary);outline:none;transition:border 0.15s;font-family:inherit;}
+.want-form input:focus,.want-form select:focus{border-color:var(--blue);}
+.want-listings{display:flex;flex-direction:column;gap:10px;margin-bottom:1rem;}
+.want-card{border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);padding:12px;display:flex;gap:10px;align-items:center;}
+.want-avatar{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0;background:var(--blue-light);color:var(--blue);}
+.want-info{flex:1;}
+.want-title{font-size:13px;font-weight:500;}
+.want-meta{font-size:12px;color:var(--color-text-secondary);font-family:monospace;}
+.want-budget{font-size:14px;font-weight:500;color:var(--blue);font-family:monospace;}
 </style>
 
-<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">E-Waste classifier — enter an item to get disposal guidance</h2>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700&display=swap" rel="stylesheet">
 
 <div class="app">
   <div class="header">
@@ -103,7 +121,7 @@ body{font-family:'Syne',sans-serif;background:var(--color-background-secondary);
     </div>
     <div>
       <h1>E-Waste Classifier</h1>
-      <p>classify · assess · dispose responsibly</p>
+      <p>classify · assess · buy · sell · dispose responsibly</p>
     </div>
   </div>
 
@@ -134,217 +152,131 @@ const DB = [
     keywords:['smartphone','phone','mobile','iphone','android','samsung'],
     itemName:'Smartphone',category:'Mobile Devices',hazardLevel:6,hazardColor:'amber',
     recyclabilityScore:'72%',estimatedLifespan:'3–5 years',estimatedRecovery:'30g copper, 0.03g gold, 0.3g silver',
-    benefits:[
-      'Recovering precious metals like gold and palladium from smartphones reduces demand for destructive mining operations.',
-      'Lithium-ion batteries contain toxic electrolytes that contaminate soil and water if landfilled.',
-      'Up to 80% of smartphone components can be reclaimed, reducing the need for new raw material extraction.',
-      'Refurbished smartphones extend device life by years, keeping electronics out of the waste stream longer.'
+    marketData:{sellRange:['₹1,500','₹8,000','₹18,000'],tipSell:'Clean the phone, include original box and charger for best price. Factory reset before listing.',tipBuy:'Check battery health (Settings > Battery) and look for screen burn-in before buying.',canSell:true},
+    sampleListings:[
+      {name:'Ravi M.',loc:'Mumbai',item:'iPhone 12, 64GB',cond:'Good',price:'₹14,500',avatar:'RM',color:'#E1F5EE',textColor:'#0F6E56'},
+      {name:'Priya K.',loc:'Bengaluru',item:'Samsung A52, cracked screen',cond:'Fair',price:'₹3,200',avatar:'PK',color:'#FAEEDA',textColor:'#854F0B'},
+      {name:'Ankit S.',loc:'Delhi',item:'Redmi Note 9, dead battery',cond:'Parts',price:'₹800',avatar:'AS',color:'#FCEBEB',textColor:'#A32D2D'},
     ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Drop off at a certified e-waste facility or manufacturer take-back programme (Apple, Samsung all offer this). Remove your SIM first.'},
-      {type:'donate',title:'Donate / Reuse',description:'Working phones can be donated to charities, schools, or refurbishers. Factory reset before donation.'},
-      {type:'store',title:'Safe Storage',description:'Store in a cool, dry place. Do not puncture or crush the battery. Keep away from flammable materials.'},
-      {type:'hazard',title:'Hazard Note',description:'Contains lithium, lead, mercury, and cadmium. Never dispose in general household waste or incinerate.'}
+    wantedListings:[
+      {name:'Neha R.',loc:'Pune',item:'iPhone 11 or newer',budget:'Up to ₹12,000',avatar:'NR'},
+      {name:'Sam T.',loc:'Chennai',item:'Android 64GB+, any brand',budget:'Up to ₹6,000',avatar:'ST'},
     ],
+    benefits:['Recovering precious metals like gold and palladium from smartphones reduces demand for destructive mining operations.','Lithium-ion batteries contain toxic electrolytes that contaminate soil and water if landfilled.','Up to 80% of smartphone components can be reclaimed, reducing the need for new raw material extraction.','Refurbished smartphones extend device life by years, keeping electronics out of the waste stream longer.'],
+    dispositionOptions:[{type:'recycle',title:'Recycle',description:'Drop off at a certified e-waste facility or manufacturer take-back programme. Remove your SIM first.'},{type:'donate',title:'Donate / Reuse',description:'Working phones can be donated to charities or schools. Factory reset before donation.'},{type:'store',title:'Safe Storage',description:'Store in a cool, dry place. Do not puncture or crush the battery.'},{type:'hazard',title:'Hazard Note',description:'Contains lithium, lead, mercury, and cadmium. Never dispose in general household waste.'}],
     footerNote:'Buying refurbished phones is one of the highest-impact ways to reduce your e-waste footprint.'
   },
   {
     keywords:['laptop','notebook','macbook','chromebook','ultrabook'],
     itemName:'Laptop',category:'Computers & Accessories',hazardLevel:5,hazardColor:'amber',
     recyclabilityScore:'78%',estimatedLifespan:'5–7 years',estimatedRecovery:'500g aluminium, 40g copper, 0.3g gold',
-    benefits:[
-      'Aluminium laptop casings are 100% recyclable and recovery saves up to 95% of the energy needed to produce new aluminium.',
-      'Lithium batteries and display backlights contain toxic substances that must be handled by certified recyclers.',
-      'Recovered copper and gold from circuit boards reduce the environmental cost of new electronics production.',
-      'A refurbished laptop has roughly 70% lower carbon footprint than a new equivalent model.'
+    marketData:{sellRange:['₹2,000','₹12,000','₹35,000'],tipSell:'Wipe your drive securely (use DBAN or factory reset). Include charger and note battery health.',tipBuy:'Ask for battery cycle count and check for dead pixels. Test all ports before paying.',canSell:true},
+    sampleListings:[
+      {name:'Aditya P.',loc:'Hyderabad',item:'Dell Inspiron 15, Core i5',cond:'Good',price:'₹22,000',avatar:'AP',color:'#E1F5EE',textColor:'#0F6E56'},
+      {name:'Meena L.',loc:'Mumbai',item:'HP Pavillion, faulty keyboard',cond:'Fair',price:'₹7,500',avatar:'ML',color:'#FAEEDA',textColor:'#854F0B'},
+      {name:'Rahul D.',loc:'Jaipur',item:'Old Lenovo ThinkPad, no charger',cond:'Parts',price:'₹2,000',avatar:'RD',color:'#FCEBEB',textColor:'#A32D2D'},
     ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Use manufacturer take-back (Dell, Apple, Lenovo all accept old devices). Many electronics retailers also collect laptops.'},
-      {type:'donate',title:'Donate / Reuse',description:'Working laptops are highly sought by schools and nonprofits. Wipe the drive securely before donating.'},
-      {type:'store',title:'Safe Storage',description:'Keep in original packaging if available, or a dry box. Avoid stacking heavy items on top.'},
-      {type:'hazard',title:'Hazard Note',description:'Contains lithium battery, lead solder, and mercury in older displays. Do not crush or incinerate.'}
+    wantedListings:[
+      {name:'Fiona M.',loc:'Bengaluru',item:'MacBook Air M1 or M2',budget:'Up to ₹55,000',avatar:'FM'},
+      {name:'Kiran B.',loc:'Kolkata',item:'Any working laptop, budget buy',budget:'Up to ₹10,000',avatar:'KB'},
     ],
+    benefits:['Aluminium laptop casings are 100% recyclable and recovery saves up to 95% of the energy needed to produce new aluminium.','Lithium batteries and display backlights contain toxic substances handled only by certified recyclers.','Recovered copper and gold from circuit boards reduce the environmental cost of new electronics production.','A refurbished laptop has roughly 70% lower carbon footprint than a new equivalent model.'],
+    dispositionOptions:[{type:'recycle',title:'Recycle',description:'Use manufacturer take-back (Dell, Apple, Lenovo all accept old devices). Many retailers also collect laptops.'},{type:'donate',title:'Donate / Reuse',description:'Working laptops are sought by schools and nonprofits. Wipe the drive securely before donating.'},{type:'store',title:'Safe Storage',description:'Keep in a dry box. Avoid stacking heavy items on top.'},{type:'hazard',title:'Hazard Note',description:'Contains lithium battery, lead solder, and mercury in older displays. Do not crush or incinerate.'}],
     footerNote:'A laptop used for 6 years instead of 4 cuts its lifetime carbon footprint by roughly 30%.'
   },
   {
     keywords:['crt','cathode ray','tube monitor','old monitor','old tv','tube television'],
     itemName:'CRT Monitor / TV',category:'Display Devices',hazardLevel:9,hazardColor:'red',
     recyclabilityScore:'45%',estimatedLifespan:'10–15 years',estimatedRecovery:'2–4kg lead glass, copper yoke',
-    benefits:[
-      'CRT glass contains up to 4kg of lead — professional recyclers safely extract and recycle this material.',
-      'Improper disposal of CRTs causes severe soil and groundwater contamination lasting decades.',
-      'Specialist dismantlers recover copper deflection yokes and other metals that have real commercial value.',
-      'Certified CRT recyclers prevent hazardous materials from reaching developing-country dumpsites.'
-    ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Must go to a certified CRT recycler — standard e-waste facilities may not accept them. Check your local authority for specialist collection events.'},
-      {type:'donate',title:'Donate / Reuse',description:'Not applicable. CRTs are obsolete and hazardous; few organisations will accept them.'},
-      {type:'store',title:'Safe Storage',description:'Do not break the screen — lead glass is extremely hazardous when shattered. Store upright on a stable surface.'},
-      {type:'hazard',title:'Hazard Note',description:'Contains 2–4kg of lead glass, barium oxide, and phosphor coatings. Classified as hazardous waste in most jurisdictions.'}
-    ],
+    marketData:{sellRange:null,tipSell:null,tipBuy:null,canSell:false,noSellReason:'CRT monitors contain up to 4kg of lead glass and are classified as hazardous waste. They cannot be safely sold or reused — certified recycling is the only responsible option.'},
+    sampleListings:[],wantedListings:[],
+    benefits:['CRT glass contains up to 4kg of lead — professional recyclers safely extract and recycle this material.','Improper disposal of CRTs causes severe soil and groundwater contamination lasting decades.','Specialist dismantlers recover copper deflection yokes and other metals that have commercial value.','Certified CRT recyclers prevent hazardous materials from reaching developing-country dumpsites.'],
+    dispositionOptions:[{type:'recycle',title:'Recycle',description:'Must go to a certified CRT recycler. Check your local authority for specialist collection events.'},{type:'donate',title:'Donate / Reuse',description:'Not applicable. CRTs are obsolete and hazardous; few organisations will accept them.'},{type:'store',title:'Safe Storage',description:'Do not break the screen — lead glass is extremely hazardous when shattered. Store upright.'},{type:'hazard',title:'Hazard Note',description:'Contains 2–4kg of lead glass, barium oxide, and phosphor coatings. Classified as hazardous waste.'}],
     footerNote:'Never place CRTs in general recycling bins — always use a specialist hazardous e-waste drop-off.'
   },
   {
     keywords:['printer','inkjet','laser','scanner','fax','all-in-one','photocopier'],
     itemName:'Printer',category:'Computers & Accessories',hazardLevel:5,hazardColor:'amber',
     recyclabilityScore:'65%',estimatedLifespan:'5–8 years',estimatedRecovery:'Plastic housing, copper wiring, steel frame',
-    benefits:[
-      'Printer cartridges can be refilled or recycled through retailer take-back programmes, keeping plastic out of landfill.',
-      'Toner powder in laser printers is a fine particulate hazard and requires proper containment during disposal.',
-      'Recovering the steel and copper components reduces the need for virgin metal extraction.',
-      'Many manufacturers offer free printer recycling — check their website before disposing.'
+    marketData:{sellRange:['₹500','₹2,500','₹8,000'],tipSell:'Include all cartridges and cables. Print a test page to confirm working order before listing.',tipBuy:'Check for ink smears, paper jams, and whether replacement cartridges are still available.',canSell:true},
+    sampleListings:[
+      {name:'Suresh V.',loc:'Coimbatore',item:'HP DeskJet 2700, works fine',cond:'Good',price:'₹2,800',avatar:'SV',color:'#E1F5EE',textColor:'#0F6E56'},
+      {name:'Divya N.',loc:'Pune',item:'Epson L3150, low ink',cond:'Fair',price:'₹4,500',avatar:'DN',color:'#FAEEDA',textColor:'#854F0B'},
     ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Manufacturers like HP and Epson offer free postal recycling. Retailers such as Staples and Best Buy accept printers in-store.'},
-      {type:'donate',title:'Donate / Reuse',description:'Working printers may be accepted by schools or community organisations. Call ahead to confirm.'},
-      {type:'store',title:'Safe Storage',description:'Remove and separately recycle any remaining ink or toner cartridges. Store in a dry location.'},
-      {type:'hazard',title:'Hazard Note',description:'Toner powder is a respiratory irritant. Ink cartridges contain chemical dyes. Handle with gloves.'}
+    wantedListings:[
+      {name:'Arjun C.',loc:'Mumbai',item:'Any working inkjet printer',budget:'Up to ₹3,000',avatar:'AC'},
     ],
+    benefits:['Printer cartridges can be refilled or recycled, keeping plastic out of landfill.','Toner powder in laser printers is a fine particulate hazard requiring proper containment.','Recovering the steel and copper components reduces the need for virgin metal extraction.','Many manufacturers offer free printer recycling — check their website before disposing.'],
+    dispositionOptions:[{type:'recycle',title:'Recycle',description:'Manufacturers like HP and Epson offer free postal recycling. Retailers like Staples and Best Buy accept printers.'},{type:'donate',title:'Donate / Reuse',description:'Working printers may be accepted by schools or community organisations.'},{type:'store',title:'Safe Storage',description:'Remove ink cartridges separately. Store in a dry location.'},{type:'hazard',title:'Hazard Note',description:'Toner powder is a respiratory irritant. Ink cartridges contain chemical dyes. Handle with gloves.'}],
     footerNote:'Always recycle ink and toner cartridges separately — many office supply stores take them for free.'
   },
   {
     keywords:['battery','batteries','aa','aaa','alkaline','lithium','nimh','button cell','coin cell','9v','rechargeable'],
     itemName:'Batteries',category:'Batteries & Power',hazardLevel:7,hazardColor:'red',
     recyclabilityScore:'60%',estimatedLifespan:'1–5 years',estimatedRecovery:'Zinc, manganese, steel, lithium',
-    benefits:[
-      'Battery chemicals including mercury, cadmium, and lead are toxic to aquatic life and must be kept out of landfill.',
-      'Recycling lithium batteries recovers valuable lithium carbonate, reducing demand for new lithium mining.',
-      'Zinc and manganese from alkaline batteries can be reclaimed and used in agricultural fertiliser.',
-      'Battery recycling facilities safely neutralise corrosive electrolytes that would otherwise leach into soil.'
-    ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Most supermarkets, electronics stores, and council recycling centres have dedicated battery collection boxes. Never bin loose batteries.'},
-      {type:'donate',title:'Donate / Reuse',description:'Not applicable for single-use batteries. Rechargeable batteries in good condition may be reused in appropriate devices.'},
-      {type:'store',title:'Safe Storage',description:'Store in a cool, dry place in their original packaging or a non-conductive container. Do not mix battery types.'},
-      {type:'hazard',title:'Hazard Note',description:'Contains heavy metals (lead, cadmium, mercury in older types) and corrosive electrolytes. Lithium batteries can ignite if damaged.'}
-    ],
+    marketData:{sellRange:null,tipSell:null,tipBuy:null,canSell:false,noSellReason:'Batteries degrade with each cycle and cannot be safely resold. Used batteries must go to a certified collection point — never in regular bins.'},
+    sampleListings:[],wantedListings:[],
+    benefits:['Battery chemicals including mercury, cadmium, and lead are toxic to aquatic life and must be kept out of landfill.','Recycling lithium batteries recovers valuable lithium carbonate, reducing demand for new lithium mining.','Zinc and manganese from alkaline batteries can be reclaimed and used in agricultural fertiliser.','Battery recycling facilities safely neutralise corrosive electrolytes that would otherwise leach into soil.'],
+    dispositionOptions:[{type:'recycle',title:'Recycle',description:'Most supermarkets and electronics stores have dedicated battery collection boxes.'},{type:'donate',title:'Donate / Reuse',description:'Not applicable for single-use batteries.'},{type:'store',title:'Safe Storage',description:'Store in a cool, dry place in a non-conductive container. Do not mix battery types.'},{type:'hazard',title:'Hazard Note',description:'Contains heavy metals and corrosive electrolytes. Lithium batteries can ignite if damaged.'}],
     footerNote:'Tape the terminals of lithium batteries before recycling to prevent short-circuit fires in collection bins.'
-  },
-  {
-    keywords:['microwave','microwave oven'],
-    itemName:'Microwave Oven',category:'Large Household Appliances',hazardLevel:4,hazardColor:'amber',
-    recyclabilityScore:'70%',estimatedLifespan:'7–10 years',estimatedRecovery:'Steel casing, copper transformer, glass turntable',
-    benefits:[
-      'The steel casing is fully recyclable via scrap metal channels, recovering high-quality steel for reuse.',
-      'Internal capacitors store high-voltage charge even when unplugged — certified recyclers discharge these safely.',
-      'Magnetron tubes contain beryllium oxide, a toxic compound that requires specialist handling.',
-      'Recycling a microwave keeps roughly 10kg of mixed metals and plastics out of landfill.'
-    ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Local council WEEE (Waste Electrical & Electronic Equipment) collection points accept microwaves. Some retailers offer take-back on new purchase.'},
-      {type:'donate',title:'Donate / Reuse',description:'Working microwaves are accepted by many charity shops and furniture reuse organisations. Clean thoroughly before donation.'},
-      {type:'store',title:'Safe Storage',description:'Unplug and store upright. Do not attempt to dismantle — internal capacitors hold dangerous charge.'},
-      {type:'hazard',title:'Hazard Note',description:'Internal capacitors may hold residual electrical charge. Magnetron tube contains beryllium oxide — a serious respiratory hazard if inhaled.'}
-    ],
-    footerNote:'Many councils offer free large appliance collection on bin day — check before paying for private disposal.'
-  },
-  {
-    keywords:['solar panel','solar','photovoltaic','pv panel'],
-    itemName:'Solar Panel',category:'Computers & Accessories',hazardLevel:5,hazardColor:'amber',
-    recyclabilityScore:'80%',estimatedLifespan:'25–30 years',estimatedRecovery:'Glass, aluminium frame, silicon cells, silver',
-    benefits:[
-      'Solar panels contain significant amounts of silver and silicon that are commercially valuable when recovered properly.',
-      'Glass and aluminium account for about 90% of panel weight and can be fully recycled through standard channels.',
-      'Specialist recyclers can recover up to 95% of silicon cells for reuse in new panels, closing the loop.',
-      'Thin-film panels may contain cadmium telluride — a toxic compound requiring specialist handling at end-of-life.'
-    ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Contact specialist solar panel recyclers (e.g. First Solar, PV Cycle in Europe). Standard e-waste centres rarely accept panels.'},
-      {type:'donate',title:'Donate / Reuse',description:'Functional panels with degraded output can be donated to community projects, schools, or off-grid housing initiatives.'},
-      {type:'store',title:'Safe Storage',description:'Store flat on a padded surface, covered from weather. Avoid cracking the cells — broken panels may leach cadmium.'},
-      {type:'hazard',title:'Hazard Note',description:'Thin-film panels contain cadmium telluride or lead. Broken cells release hazardous particles. Handle with gloves and eye protection.'}
-    ],
-    footerNote:'Solar panels are covered by WEEE regulations in the EU — manufacturers must provide free take-back.'
-  },
-  {
-    keywords:['usb','cable','hdmi','vga','charger','power cord','extension lead','aux','charging cable','wire'],
-    itemName:'Cable / Charger',category:'Cables & Peripherals',hazardLevel:2,hazardColor:'green',
-    recyclabilityScore:'55%',estimatedLifespan:'3–5 years',estimatedRecovery:'Copper wiring, plastic insulation',
-    benefits:[
-      'Copper is the most valuable recoverable material in cables and can be fully recycled with minimal quality loss.',
-      'PVC insulation in older cables releases toxic dioxins when incinerated — recycling prevents this entirely.',
-      'Bundling cables for recycling improves the economics of copper recovery for specialist recyclers.',
-      'Keeping cables out of general waste prevents copper from being lost to low-grade landfill recovery.'
-    ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Place in cable collection bins at electronics retailers (e.g. Currys, Best Buy) or council e-waste points. Bundle cables together to make handling easier.'},
-      {type:'donate',title:'Donate / Reuse',description:'Working chargers and common cables (USB-A, HDMI) are often needed by community centres, schools, and repair cafes.'},
-      {type:'store',title:'Safe Storage',description:'Coil cables loosely without kinking. Store in a bag or box to keep them contained for recycling.'},
-      {type:'hazard',title:'Hazard Note',description:'Low hazard. Older cables may contain lead solder at connectors and PVC insulation. Not dangerous in normal use.'}
-    ],
-    footerNote:'Repair cafes often accept working cables for reuse — check if there is one near you.'
-  },
-  {
-    keywords:['keyboard','mouse','trackpad','webcam','headphones','headset','speaker','monitor','lcd','led display'],
-    itemName:'Computer Peripheral',category:'Cables & Peripherals',hazardLevel:4,hazardColor:'amber',
-    recyclabilityScore:'68%',estimatedLifespan:'5–8 years',estimatedRecovery:'Plastic housing, copper, steel',
-    benefits:[
-      'Peripheral plastics including ABS and polycarbonate are recyclable and reduce demand for virgin plastic production.',
-      'Many peripherals contain small circuit boards with recoverable precious metals including gold and palladium.',
-      'Monitor backlights in older LED panels contain mercury — specialist recyclers handle this safely.',
-      'Donating working peripherals extends their useful life and supports digital inclusion.'
-    ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Drop off at any electronics retailer collection point or council WEEE facility. Monitors may require separate handling.'},
-      {type:'donate',title:'Donate / Reuse',description:'Working keyboards, mice, and monitors are in high demand at schools and community organisations.'},
-      {type:'store',title:'Safe Storage',description:'Store in original packaging if possible. Keep displays vertical to avoid pressure on the screen.'},
-      {type:'hazard',title:'Hazard Note',description:'Older monitors may contain mercury backlights. Circuit boards contain lead solder and flame-retardant chemicals.'}
-    ],
-    footerNote:'Many repair cafes will refurbish or repurpose working peripherals — it is worth checking locally.'
-  },
-  {
-    keywords:['desktop','pc','computer','tower','server','mac','imac','mac mini'],
-    itemName:'Desktop Computer',category:'Computers & Accessories',hazardLevel:5,hazardColor:'amber',
-    recyclabilityScore:'80%',estimatedLifespan:'6–10 years',estimatedRecovery:'Steel chassis, 1kg+ aluminium, 60g copper, 0.5g gold',
-    benefits:[
-      'Desktop computers yield some of the highest quantities of recoverable precious metals per unit of any consumer electronics.',
-      'Steel and aluminium chassis components are highly recyclable and have strong secondary markets.',
-      'Hard drives must be securely wiped or physically destroyed before recycling to protect personal data.',
-      'Refurbished desktops are cost-effective for schools and nonprofits — donating working machines has high social impact.'
-    ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Council WEEE sites, manufacturer take-back programmes, and specialist IT recyclers (e.g. Recycle IT) all accept desktops. Many offer free collection for businesses.'},
-      {type:'donate',title:'Donate / Reuse',description:'Working desktops are accepted by charities such as Computer Aid International. Ensure the drive is wiped using DBAN or similar.'},
-      {type:'store',title:'Safe Storage',description:'Store in a dry environment. Remove and separately destroy or wipe the hard drive before long-term storage.'},
-      {type:'hazard',title:'Hazard Note',description:'Contains lead solder on circuit boards, lithium CMOS battery, and flame-retardant plastics. Do not incinerate.'}
-    ],
-    footerNote:'Securely wiping a hard drive before recycling takes 20 minutes and protects years of personal data.'
   },
   {
     keywords:['tablet','ipad','kindle','e-reader','ereader'],
     itemName:'Tablet / E-reader',category:'Mobile Devices',hazardLevel:6,hazardColor:'amber',
     recyclabilityScore:'70%',estimatedLifespan:'4–6 years',estimatedRecovery:'Aluminium body, lithium battery, glass screen',
-    benefits:[
-      'Tablets contain lithium-ion batteries that must be kept out of general waste due to fire and toxicity risks.',
-      'Aluminium casings are among the most recyclable materials in electronics — recovery saves significant energy.',
-      'Glass displays can be reprocessed into new glass products when separated by specialist recyclers.',
-      'A factory-reset tablet in working order is ideal for donation to children\'s literacy and education programmes.'
+    marketData:{sellRange:['₹1,000','₹6,000','₹20,000'],tipSell:'Factory reset and remove your account. Include cover or charger to increase value.',tipBuy:'Check for dead zones on the touchscreen and test all apps. Battery health matters on older tablets.',canSell:true},
+    sampleListings:[
+      {name:'Tanya R.',loc:'Delhi',item:'iPad Air 2, 64GB, minor scratches',cond:'Good',price:'₹14,000',avatar:'TR',color:'#E1F5EE',textColor:'#0F6E56'},
+      {name:'Vijay M.',loc:'Surat',item:'Samsung Tab A, cracked corner',cond:'Fair',price:'₹3,800',avatar:'VM',color:'#FAEEDA',textColor:'#854F0B'},
     ],
-    dispositionOptions:[
-      {type:'recycle',title:'Recycle',description:'Apple, Samsung, and Amazon all have take-back or trade-in programmes. Electronics retailers also collect tablets.'},
-      {type:'donate',title:'Donate / Reuse',description:'Working tablets are excellent donations for schools, libraries, and care homes. Factory reset and remove your account first.'},
-      {type:'store',title:'Safe Storage',description:'Store with some charge remaining (around 50%). Keep away from extreme heat and moisture.'},
-      {type:'hazard',title:'Hazard Note',description:'Lithium battery is the primary hazard. Do not puncture, bend, or expose to heat. Damaged screens may contain hazardous materials.'}
+    wantedListings:[
+      {name:'Leena S.',loc:'Nagpur',item:'iPad or Android tablet for kids',budget:'Up to ₹8,000',avatar:'LS'},
     ],
+    benefits:['Tablets contain lithium-ion batteries that must be kept out of general waste due to fire and toxicity risks.','Aluminium casings are among the most recyclable materials in electronics.','Glass displays can be reprocessed into new glass products when separated by specialist recyclers.','A factory-reset tablet in working order is ideal for donation to children\'s literacy programmes.'],
+    dispositionOptions:[{type:'recycle',title:'Recycle',description:'Apple, Samsung, and Amazon all have take-back or trade-in programmes.'},{type:'donate',title:'Donate / Reuse',description:'Working tablets are excellent donations for schools and libraries.'},{type:'store',title:'Safe Storage',description:'Store with some charge remaining (around 50%). Keep away from extreme heat.'},{type:'hazard',title:'Hazard Note',description:'Lithium battery is the primary hazard. Do not puncture, bend, or expose to heat.'}],
     footerNote:'Many libraries and adult education centres have active tablet donation drives — contact yours directly.'
+  },
+  {
+    keywords:['desktop','pc','computer','tower','server','mac','imac','mac mini'],
+    itemName:'Desktop Computer',category:'Computers & Accessories',hazardLevel:5,hazardColor:'amber',
+    recyclabilityScore:'80%',estimatedLifespan:'6–10 years',estimatedRecovery:'Steel chassis, 1kg+ aluminium, 60g copper, 0.5g gold',
+    marketData:{sellRange:['₹1,500','₹8,000','₹25,000'],tipSell:'Wipe the hard drive before selling (use DBAN). Include keyboard, mouse and cables if possible.',tipBuy:'Boot and test all ports. Check for overheating issues by running it for 10 minutes.',canSell:true},
+    sampleListings:[
+      {name:'Rohit J.',loc:'Ahmedabad',item:'Core i5, 8GB RAM, 500GB HDD',cond:'Good',price:'₹12,000',avatar:'RJ',color:'#E1F5EE',textColor:'#0F6E56'},
+      {name:'Preet K.',loc:'Ludhiana',item:'Old Pentium desktop, dusty',cond:'Fair',price:'₹1,800',avatar:'PK',color:'#FAEEDA',textColor:'#854F0B'},
+    ],
+    wantedListings:[
+      {name:'Dev A.',loc:'Mumbai',item:'Budget desktop for office work',budget:'Up to ₹9,000',avatar:'DA'},
+    ],
+    benefits:['Desktop computers yield some of the highest quantities of recoverable precious metals per unit.','Steel and aluminium chassis components are highly recyclable with strong secondary markets.','Hard drives must be securely wiped or physically destroyed before recycling.','Refurbished desktops are cost-effective for schools and nonprofits.'],
+    dispositionOptions:[{type:'recycle',title:'Recycle',description:'Council WEEE sites, manufacturer take-back programmes, and specialist IT recyclers all accept desktops.'},{type:'donate',title:'Donate / Reuse',description:'Working desktops are accepted by charities. Ensure the drive is wiped using DBAN or similar.'},{type:'store',title:'Safe Storage',description:'Store in a dry environment. Remove and separately destroy the hard drive.'},{type:'hazard',title:'Hazard Note',description:'Contains lead solder on circuit boards, lithium CMOS battery, and flame-retardant plastics.'}],
+    footerNote:'Securely wiping a hard drive before recycling takes 20 minutes and protects years of personal data.'
+  },
+  {
+    keywords:['usb','cable','hdmi','vga','charger','power cord','aux','charging cable','wire'],
+    itemName:'Cable / Charger',category:'Cables & Peripherals',hazardLevel:2,hazardColor:'green',
+    recyclabilityScore:'55%',estimatedLifespan:'3–5 years',estimatedRecovery:'Copper wiring, plastic insulation',
+    marketData:{sellRange:['₹50','₹200','₹600'],tipSell:'Bundle multiple cables together. Only list if they are fully functional — broken cables have no resale market.',tipBuy:'Test before buying. Universal chargers should always match your device\'s power rating.',canSell:true},
+    sampleListings:[
+      {name:'Asha T.',loc:'Bengaluru',item:'Original Apple 20W charger, used 3mo',cond:'Good',price:'₹450',avatar:'AT',color:'#E1F5EE',textColor:'#0F6E56'},
+      {name:'Mohit R.',loc:'Delhi',item:'Set of 5 mixed USB cables',cond:'Good',price:'₹150',avatar:'MR',color:'#E1F5EE',textColor:'#0F6E56'},
+    ],
+    wantedListings:[
+      {name:'Ritika S.',loc:'Mumbai',item:'USB-C fast charger 45W+',budget:'Up to ₹400',avatar:'RS'},
+    ],
+    benefits:['Copper is the most valuable recoverable material in cables and can be fully recycled.','PVC insulation in older cables releases toxic dioxins when incinerated.','Bundling cables improves the economics of copper recovery for specialist recyclers.','Keeping cables out of general waste prevents copper from being lost.'],
+    dispositionOptions:[{type:'recycle',title:'Recycle',description:'Place in cable collection bins at electronics retailers or council e-waste points.'},{type:'donate',title:'Donate / Reuse',description:'Working chargers and common cables are often needed by community centres and repair cafes.'},{type:'store',title:'Safe Storage',description:'Coil cables loosely without kinking. Store in a bag for recycling.'},{type:'hazard',title:'Hazard Note',description:'Low hazard. Older cables may contain lead solder at connectors and PVC insulation.'}],
+    footerNote:'Repair cafes often accept working cables for reuse — check if there is one near you.'
   }
 ];
 
 const FALLBACK = {
   itemName:'Unknown Electronic Item',category:'Other',hazardLevel:5,hazardColor:'amber',
   recyclabilityScore:'~60%',estimatedLifespan:'Unknown',estimatedRecovery:'Varies by component',
-  benefits:[
-    'Even unidentified electronics often contain recoverable metals including copper, steel, and small amounts of precious metals.',
-    'Keeping any electronic device out of general waste prevents potential toxic leaching from batteries and circuit components.',
-    'Certified e-waste recyclers have the equipment to safely assess and process unfamiliar devices.',
-    'When in doubt, a local council WEEE collection point is always a safe starting point for any electrical item.'
-  ],
-  dispositionOptions:[
-    {type:'recycle',title:'Recycle',description:'Take to your nearest council WEEE drop-off or certified e-waste recycler. They can assess the item on arrival.'},
-    {type:'donate',title:'Donate / Reuse',description:'If the device works, try a local repair cafe, charity shop, or freecycle group before recycling.'},
-    {type:'store',title:'Safe Storage',description:'Store in a dry, cool place away from children. If it has a battery, do not leave it near flammable materials.'},
-    {type:'hazard',title:'Hazard Note',description:'Most electronics contain some hazardous materials (lead solder, lithium batteries, flame retardants). Always prefer certified recyclers.'}
-  ],
+  marketData:{sellRange:['₹200','₹1,500','₹5,000'],tipSell:'Describe the item clearly and list any visible damage. Include original accessories for better value.',tipBuy:'Ask for photos, a working demo, and any known faults before buying.',canSell:true},
+  sampleListings:[],wantedListings:[],
+  benefits:['Even unidentified electronics often contain recoverable metals including copper, steel, and precious metals.','Keeping any electronic device out of general waste prevents toxic leaching.','Certified e-waste recyclers can safely assess and process unfamiliar devices.','When in doubt, a local council WEEE collection point is always a safe starting point.'],
+  dispositionOptions:[{type:'recycle',title:'Recycle',description:'Take to your nearest council WEEE drop-off or certified e-waste recycler.'},{type:'donate',title:'Donate / Reuse',description:'If the device works, try a local repair cafe, charity shop, or freecycle group.'},{type:'store',title:'Safe Storage',description:'Store in a dry, cool place away from children.'},{type:'hazard',title:'Hazard Note',description:'Most electronics contain some hazardous materials. Always prefer certified recyclers.'}],
   footerNote:'If you cannot identify the item, your local council waste line can usually advise on correct disposal.'
 };
 
@@ -354,6 +286,12 @@ const icons = {
   store:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>`,
   hazard:`<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`
 };
+
+const condMap = {Good:{cls:'cond-good',label:'Good'},Fair:{cls:'cond-fair',label:'Fair'},Parts:{cls:'cond-fair',label:'For parts'}};
+
+let activeCond = 'Good';
+let activeMarketTab = 'sell';
+let currentItem = null;
 
 function fill(val){document.getElementById('wasteInput').value=val;classify();}
 
@@ -368,8 +306,46 @@ function findItem(query){
 function classify(){
   const input=document.getElementById('wasteInput').value.trim();
   if(!input)return;
-  const result=findItem(input)||{...FALLBACK,itemName:input.charAt(0).toUpperCase()+input.slice(1)+' (General)' };
+  const result=findItem(input)||{...FALLBACK,itemName:input.charAt(0).toUpperCase()+input.slice(1)+' (General)'};
+  currentItem = result;
   render(result);
+}
+
+function switchMarketTab(tab){
+  activeMarketTab = tab;
+  document.querySelectorAll('.market-tab').forEach(t=>t.classList.toggle('active', t.dataset.tab===tab));
+  document.getElementById('marketSell').style.display = tab==='sell'?'block':'none';
+  document.getElementById('marketBuy').style.display = tab==='buy'?'block':'none';
+}
+
+function setCond(c){
+  activeCond = c;
+  document.querySelectorAll('.cond-btn').forEach(b=>b.classList.toggle('active',b.dataset.cond===c));
+}
+
+function postListing(){
+  const title = document.getElementById('listTitle').value.trim();
+  const price = document.getElementById('listPrice').value.trim();
+  if(!title||!price){alert('Please fill in at least a title and asking price.');return;}
+  const toast = document.getElementById('sellToast');
+  toast.style.display='block';
+  toast.textContent = `✓ Listing posted: "${title}" at ${price} — buyers in your area will be notified.`;
+  document.getElementById('listTitle').value='';
+  document.getElementById('listPrice').value='';
+  document.getElementById('listNotes').value='';
+  setTimeout(()=>{toast.style.display='none';},5000);
+}
+
+function postWant(){
+  const item = document.getElementById('wantItem').value.trim();
+  const budget = document.getElementById('wantBudget').value.trim();
+  if(!item||!budget){alert('Please fill in the item and your budget.');return;}
+  const toast = document.getElementById('buyToast');
+  toast.style.display='block';
+  toast.textContent = `✓ Buy request posted for "${item}" with budget ${budget} — sellers will reach out.`;
+  document.getElementById('wantItem').value='';
+  document.getElementById('wantBudget').value='';
+  setTimeout(()=>{toast.style.display='none';},5000);
 }
 
 function render(r){
@@ -379,6 +355,115 @@ function render(r){
   const mc=r.hazardColor==='green'?'green':r.hazardColor==='red'?'red':'amber';
   const benefits=r.benefits.map(b=>`<li><span class="dot"></span><span>${b}</span></li>`).join('');
   const disp=r.dispositionOptions.map(d=>`<div class="disp-card"><div class="disp-icon ${d.type}">${icons[d.type]||icons.store}</div><div class="disp-title">${d.title}</div><div class="disp-text">${d.description}</div></div>`).join('');
+
+  const md = r.marketData;
+  let marketHTML = '';
+
+  if(!md.canSell){
+    marketHTML = `
+    <div class="market-section">
+      <div style="padding:1.25rem;display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:36px;height:36px;background:#FCEBEB;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#A32D2D" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div>
+          <div style="font-size:13px;font-weight:500;color:#A32D2D;margin-bottom:4px;">Not suitable for resale</div>
+          <div style="font-size:13px;color:var(--color-text-secondary);line-height:1.6;">${md.noSellReason}</div>
+        </div>
+      </div>
+    </div>`;
+  } else {
+    const priceRow = md.sellRange ? `
+    <div class="market-price-row">
+      <div class="price-card"><div class="price-card-label">Low end</div><div class="price-card-val" style="color:#A32D2D;">${md.sellRange[0]}</div></div>
+      <div class="price-card"><div class="price-card-label">Typical</div><div class="price-card-val">${md.sellRange[1]}</div></div>
+      <div class="price-card"><div class="price-card-label">High end</div><div class="price-card-val" style="color:#0F6E56;">${md.sellRange[2]}</div></div>
+    </div>` : '';
+
+    const sellListings = r.sampleListings.length ? r.sampleListings.map(l=>`
+      <div class="listing-card">
+        <div class="listing-avatar" style="background:${l.color};color:${l.textColor};">${l.avatar}</div>
+        <div class="listing-info">
+          <div class="listing-title">${l.item}</div>
+          <div class="listing-meta">${l.name}</div>
+          <div class="listing-tags">
+            <span class="listing-tag ${condMap[l.cond]?.cls||'cond-fair'}">${l.cond}</span>
+            <span class="listing-tag loc">${l.loc}</span>
+          </div>
+        </div>
+        <div class="listing-price">${l.price}</div>
+      </div>`).join('') : '<div style="font-size:13px;color:var(--color-text-secondary);padding:8px 0;">No active listings yet — be the first to sell!</div>';
+
+    const wantListings = r.wantedListings.length ? r.wantedListings.map(w=>`
+      <div class="want-card">
+        <div class="want-avatar">${w.avatar}</div>
+        <div class="want-info">
+          <div class="want-title">${w.item}</div>
+          <div class="want-meta">${w.name} · ${w.loc}</div>
+        </div>
+        <div class="want-budget">${w.budget}</div>
+      </div>`).join('') : '<div style="font-size:13px;color:var(--color-text-secondary);padding:8px 0;">No buyers listed yet.</div>';
+
+    marketHTML = `
+    <div class="market-section">
+      <div class="market-header">
+        <button class="market-tab active" data-tab="sell" onclick="switchMarketTab('sell')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:5px;vertical-align:-2px;"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+          Sell your item
+        </button>
+        <button class="market-tab" data-tab="buy" onclick="switchMarketTab('buy')">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right:5px;vertical-align:-2px;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          Buy / Request
+        </button>
+      </div>
+
+      <div id="marketSell" class="market-body">
+        <div class="section-title" style="margin-bottom:10px;">Estimated resale value</div>
+        ${priceRow}
+        <div class="section-title" style="margin-bottom:8px;">Active listings nearby</div>
+        <div class="listings-grid" style="margin-bottom:1rem;">${sellListings}</div>
+        <div class="section-title" style="margin-bottom:8px;">Post your listing</div>
+        <div id="sellToast" class="success-toast"></div>
+        <div class="cond-select">
+          <span>Condition:</span>
+          <button class="cond-btn active" data-cond="Good" onclick="setCond('Good')">Good</button>
+          <button class="cond-btn" data-cond="Fair" onclick="setCond('Fair')">Fair</button>
+          <button class="cond-btn" data-cond="Parts" onclick="setCond('Parts')">For parts</button>
+        </div>
+        <div class="listing-form">
+          <input type="text" id="listTitle" placeholder="Item title e.g. Samsung Galaxy S21, 128GB" />
+          <div class="form-row">
+            <input type="text" id="listPrice" placeholder="Asking price e.g. ₹8,500" />
+            <input type="text" id="listLocation" placeholder="Your city" />
+          </div>
+          <textarea id="listNotes" placeholder="Any notes about condition, included accessories, known faults…"></textarea>
+          <button class="btn-post" onclick="postListing()">Post listing ↗</button>
+        </div>
+        <div class="market-tip" style="margin-top:10px;">
+          <strong>Seller tip:</strong> ${md.tipSell}
+        </div>
+      </div>
+
+      <div id="marketBuy" class="market-body" style="display:none;">
+        <div class="section-title" style="margin-bottom:8px;">People looking to buy</div>
+        <div class="want-listings">${wantListings}</div>
+        <div class="section-title" style="margin-bottom:8px;">Post a buy request</div>
+        <div id="buyToast" class="success-toast"></div>
+        <div class="want-form">
+          <input type="text" id="wantItem" placeholder="What are you looking for? e.g. iPhone 12, any colour" />
+          <div class="form-row">
+            <input type="text" id="wantBudget" placeholder="Your budget e.g. ₹12,000" />
+            <input type="text" id="wantCity" placeholder="Your city" />
+          </div>
+          <button class="btn-post buy-btn" onclick="postWant()">Post buy request ↗</button>
+        </div>
+        <div class="market-tip" style="margin-top:10px;">
+          <strong>Buyer tip:</strong> ${md.tipBuy}
+        </div>
+      </div>
+    </div>`;
+  }
+
   document.getElementById('resultArea').innerHTML=`
   <div class="result-card">
     <div class="result-header">
@@ -394,6 +479,10 @@ function render(r){
       </div>
       <div class="section-title">Hazard rating</div>
       <div class="hazard-bar"><div class="hazard-fill" style="width:${pct}%;background:${fill};"></div></div>
+
+      <div class="section-title">Buy · Sell marketplace</div>
+      ${marketHTML}
+
       <div class="section-title">Benefits of proper disposal</div>
       <ul class="benefits-list">${benefits}</ul>
       <div class="section-title">Disposition options</div>
@@ -401,24 +490,9 @@ function render(r){
       <div class="footer-note">${r.footerNote}</div>
     </div>
   </div>`;
+
+  activeMarketTab = 'sell';
 }
 
 document.getElementById('wasteInput').addEventListener('keydown',e=>{if(e.key==='Enter')classify();});
 </script>
-
-<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;">
-E-Waste classifier — enter an item to get disposal guidance
-</h2>
-
-<div class="app">
-  <!-- KEEP YOUR FULL HTML BLOCK HERE (unchanged) -->
-</div>
-
-<div id="resultArea"></div>
-
-<script>
-/* ✅ PASTE YOUR FULL JS HERE (unchanged) */
-</script>
-
-</body>
-</html>
